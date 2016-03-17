@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opinnaytetyo.CSharp", "Opinnaytetyo.CSharp.csproj", "{FFFB518E-A59C-534F-FD65-95A67E9A442F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFFB518E-A59C-534F-FD65-95A67E9A442F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFFB518E-A59C-534F-FD65-95A67E9A442F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFFB518E-A59C-534F-FD65-95A67E9A442F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFFB518E-A59C-534F-FD65-95A67E9A442F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
