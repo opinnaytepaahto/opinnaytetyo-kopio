@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     public float shootTimer = 0.3f;
 
-    private float timer = 3f;
+    private float timer = 1f;
 
     public GameObject hearth1;
     public GameObject hearth2;

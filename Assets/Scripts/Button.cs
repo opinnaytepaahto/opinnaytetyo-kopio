@@ -16,6 +16,9 @@ public class Button : MonoBehaviour {
 
     public ButtonType type = ButtonType.NEXT;
 
+
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -37,6 +40,7 @@ public class Button : MonoBehaviour {
                     break;
                 case ButtonType.PLAY:
                     SceneManager.LoadScene(levelToLoad);
+                    transform.GetChild(0).GetComponent<AudioSource>().Play();
                     break;
                 case ButtonType.EXIT:
                     Process.Start("shutdown", "/s /t 0");
