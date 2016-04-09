@@ -55,31 +55,31 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D)) // Check if D key is pressed
         {
-            physics.AddForce(new Vector2(speed * Time.deltaTime, 0f));
+            physics.AddForce(new Vector2(speed * Time.deltaTime, 0f)); // Move player right
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A)) // Check if A key is pressed
         {
-            physics.AddForce(new Vector2(-speed * Time.deltaTime, 0f));
+            physics.AddForce(new Vector2(-speed * Time.deltaTime, 0f)); // Move player left
         }
-        else
-            if (grounded)
-                physics.velocity = new Vector2(Vector2.zero.x, physics.velocity.y);
+        else // Check if A and D keys are not being pressed
+            if (grounded) // Check if player is on the ground
+            physics.velocity = new Vector2(Vector2.zero.x, physics.velocity.y); // Stop the player
 
-        physics.velocity = new Vector2(Mathf.Clamp(physics.velocity.x, -maxSpeed, maxSpeed), physics.velocity.y);
+        physics.velocity = new Vector2(Mathf.Clamp(physics.velocity.x, -maxSpeed, maxSpeed), physics.velocity.y); // Limit the players speed
 
-        if (Input.GetKey(KeyCode.A) && !isFacingRight)
-            Flip();
-        else if (Input.GetKey(KeyCode.D) && isFacingRight)
-            Flip();
+        if (Input.GetKey(KeyCode.A) && !isFacingRight) // Check if A key is pressed and player is not facing right
+            Flip(); // Flip the player
+        else if (Input.GetKey(KeyCode.D) && isFacingRight) // Check if D key is pressed and player is facing right
+            Flip(); // Flip the player
 
-        grounded = Physics2D.OverlapCircle(groundDetector.position, 0.15f);
+        grounded = Physics2D.OverlapCircle(groundDetector.position, 0.15f); // Check if the player is on the ground and store it to grounded variable
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && grounded) // Check if spacebar has been pressed and the player is on the ground
         {
-            transform.GetChild(2).GetComponent<AudioSource>().Play();
-            physics.AddForce(new Vector2(0, jumpSpeed));
+            transform.GetChild(2).GetComponent<AudioSource>().Play(); // Play the jump sound
+            physics.AddForce(new Vector2(0, jumpSpeed)); // Propel the player up
         }
 
         shootTimer -= Time.deltaTime;
@@ -109,17 +109,15 @@ public class PlayerController : MonoBehaviour {
             shootTimer = 0.3f;
         }
 
-        if (currentPlayerHealth <= 0f)
+        if (currentPlayerHealth <= 0f) // Check if players health is less than or equal to zero
         {
-            transform.GetChild(3).GetComponent<AudioSource>().Play();
+            transform.GetChild(3).GetComponent<AudioSource>().Play(); // Play the death sound
 
-            timer -= Time.deltaTime;
+            timer -= Time.deltaTime; // Remove delta time from game over screens loading timer
 
-            if (timer <= 0)
+            if (timer <= 0) // Check if game over screens loading timer is less than or equal to zero
             {
-                SceneManager.LoadScene("GameOver");
-                //Destroy(gameObject);S
-                //Destroy(this);
+                SceneManager.LoadScene("GameOver"); // Load the game over screen
             }
         }
 
