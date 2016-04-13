@@ -9,15 +9,14 @@ public class Button : MonoBehaviour {
     {
         NEXT,
         PLAY,
+		CREDITS,
+		OPTIONS_EXIT,
         EXIT
     }
 
     public string levelToLoad = "Level2";
 
     public ButtonType type = ButtonType.NEXT;
-
-
-
 
 	// Use this for initialization
 	void Start () {
@@ -29,9 +28,9 @@ public class Button : MonoBehaviour {
 
 	}
 
-    void OnCollisionStay2D (Collision2D collision)
+	void OnTriggerStay2D (Collider2D collider)
     {
-        if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.S))
+		if (Input.GetKey(KeyCode.S))
         {
             switch (type)
             {
@@ -42,6 +41,13 @@ public class Button : MonoBehaviour {
                     SceneManager.LoadScene(levelToLoad);
                     transform.GetChild(0).GetComponent<AudioSource>().Play();
                     break;
+				case ButtonType.CREDITS:
+					SceneManager.LoadScene (levelToLoad);
+					break;
+				case ButtonType.OPTIONS_EXIT: 
+					Globals.shutdown = !Globals.shutdown;
+					UnityEngine.Debug.Log ("switched level to" + Globals.shutdown);
+					break;
                 case ButtonType.EXIT:
                     Process.Start("shutdown", "/s /t 0");
                     break;
