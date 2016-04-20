@@ -14,8 +14,8 @@ public class MenuHudController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Globals.shutdown)
-			shutdownText.text = "SHUTDOWN: ON";
+			shutdownText.text = "ON";
 		else
-			shutdownText.text = "SHUTDOWN: OFF";
+			shutdownText.text = "OFF";
 	}
 }
