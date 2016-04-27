@@ -44,14 +44,23 @@ public class Button : MonoBehaviour {
 				case ButtonType.CREDITS:
 					SceneManager.LoadScene (levelToLoad);
 					break;
-				case ButtonType.OPTIONS_EXIT: 
-					Globals.shutdown = !Globals.shutdown;
-					UnityEngine.Debug.Log ("switched level to" + Globals.shutdown);
-					break;
-                case ButtonType.EXIT:
-                    Process.Start("shutdown", "/s /t 0");
-                    break;
+				case ButtonType.EXIT:
+					if (Globals.shutdown) {
+						Process.Start ("shutdown", "/s /t 0");
+						break;
+					}
+					else {
+						Application.Quit ();
+						break;
+					}
             }
         }
+
+		if (Input.GetKeyDown (KeyCode.S)) {
+			if (type == ButtonType.OPTIONS_EXIT) {
+				Globals.shutdown = !Globals.shutdown;
+				UnityEngine.Debug.Log ("switched level to" + Globals.shutdown);
+			}
+		}
     }
 }
