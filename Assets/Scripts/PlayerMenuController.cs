@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerMenuController : MonoBehaviour {
 
@@ -30,6 +31,10 @@ public class PlayerMenuController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+		if (Input.GetKey (KeyCode.Q)) // Check if Q key is pressed 
+		{
+			SceneManager.LoadScene("Menu"); // Back to MainMenu
+		}
         if (Input.GetKey(KeyCode.D))
         {
             physics.AddForce(new Vector2(speed * Time.deltaTime, 0f));
@@ -51,7 +56,7 @@ public class PlayerMenuController : MonoBehaviour {
 
         grounded = Physics2D.OverlapCircle(groundDetector.position, 0.15f);
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+		if (Input.GetKeyDown(KeyCode.W) && grounded)
         {
             transform.GetChild(2).GetComponent<AudioSource>().Play();
             physics.AddForce(new Vector2(0, jumpSpeed));
@@ -64,7 +69,7 @@ public class PlayerMenuController : MonoBehaviour {
             shootTimer = 0;
         }
 
-        if (Input.GetKey(KeyCode.LeftControl) && shootTimer == 0)
+		if (Input.GetKey(KeyCode.Space) && shootTimer == 0)
         {
             transform.GetChild(1).GetComponent<AudioSource>().Play();
 

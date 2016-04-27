@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
+		if (Input.GetKey (KeyCode.Q)) // Check if Q key is pressed 
+		{
+			SceneManager.LoadScene("Menu"); // Back to MainMenu
+		}
         if (Input.GetKey(KeyCode.D)) // Check if D key is pressed
         {
             physics.AddForce(new Vector2(speed * Time.deltaTime, 0f)); // Move player right
@@ -76,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 
         grounded = Physics2D.OverlapCircle(groundDetector.position, 0.15f); // Check if the player is on the ground and store it to grounded variable
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded) // Check if spacebar has been pressed and the player is on the ground
+		if (Input.GetKeyDown(KeyCode.W) && grounded) // Check if spacebar has been pressed and the player is on the ground
         {
             transform.GetChild(2).GetComponent<AudioSource>().Play(); // Play the jump sound
             physics.AddForce(new Vector2(0, jumpSpeed)); // Propel the player up
@@ -89,7 +93,7 @@ public class PlayerController : MonoBehaviour {
             shootTimer = 0;
         }
 
-        if (Input.GetKey(KeyCode.LeftControl) && shootTimer == 0)
+		if (Input.GetKey(KeyCode.Space) && shootTimer == 0)
         {
             transform.GetChild(1).GetComponent<AudioSource>().Play();
 

@@ -34,16 +34,13 @@ public class BulletController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        timer -= Time.deltaTime;
-        
-        if (timer <= 0)
-        {
-            Destroy(gameObject);
-        }
+
 	}
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+		Destroy (gameObject);
+
         if (doesDamage)
         {
             if (collision.gameObject.tag == "Enemy")
